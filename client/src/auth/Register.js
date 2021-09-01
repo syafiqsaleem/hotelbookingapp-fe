@@ -6,15 +6,48 @@ const Register = () => {
   const [password, setPassword] = useState("");
 
   // Upon clicking submit button, data will be sent to backend
-  const handleSubmit = () => {
-    alert("send user info to backend");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.table({ name, email, password });
   };
 
   // Register details
   const registerForm = () => (
-    <form onSubmit={handleSubmit}>
-      show the form <button type="submit">Submit</button>
-      {""}
+    <form onSubmit={handleSubmit} className="mt-3">
+      <div className="form-group mb-3">
+        <label className="form-label">Your Name</label>
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Enter name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        ></input>
+      </div>
+
+      <div className="form-group mb-3">
+        <label className="form-label">Email address</label>
+        <input
+          type="email"
+          className="form-control"
+          placeholder="Enter email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        ></input>
+      </div>
+
+      <div className="form-group mb-3">
+        <label className="form-label">Password</label>
+        <input
+          type="password"
+          className="form-control"
+          placeholder="Enter password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        ></input>
+      </div>
+
+      <button className="btn btn-primary">Submit</button>
     </form>
   );
 
