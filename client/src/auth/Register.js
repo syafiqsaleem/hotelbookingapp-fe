@@ -1,12 +1,14 @@
 import { useState } from "react";
 import RegisterForm from "../components/RegisterForm";
 import axios from "axios";
+import { toast } from "react-toastify";
 
-const Register = () => {
+const Register = ({ history }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // console.log("history", history);
   // Upon clicking submit button, data will be sent to backend
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,8 +20,11 @@ const Register = () => {
         password,
       });
       console.log("REGISTER USER ===>", res);
+      toast.success("Register successful. Please login.");
+      history.push("/login");
     } catch (err) {
       console.log(err);
+      if (err.response.status === 400) toast.error(err.response.data);
     }
   };
 
