@@ -1,8 +1,5 @@
 // { type: 'LOGGED_IN_USER', payload: {name: "Bob", role: "Seller"} }
-export const authReducer = (
-  state = { name: "BOB", role: "Seller" },
-  action
-) => {
+export const authReducer = (state = {}, action) => {
   // The way Reducer updates the state, it will take the state and dispatch some action(will have name and payload(data))
   switch (action.type) {
     case "LOGGED_IN_USER":
