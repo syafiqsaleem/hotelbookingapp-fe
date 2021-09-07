@@ -9,6 +9,7 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import Dashboard from "./user/Dashboard";
 import DashboardSeller from "./user/DashboardSeller";
+import NewHotel from "./hotels/NewHotel";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           path="/dashboard/seller"
           component={DashboardSeller}
         />
+        <PrivateRoute exact path="/hotels/new" component={NewHotel} />
       </Switch>
     </BrowserRouter>
   );
