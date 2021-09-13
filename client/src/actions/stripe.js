@@ -16,7 +16,7 @@ export const getAccountStatus = async (token) =>
     `${process.env.REACT_APP_API}/get-account-status`,
     {},
     {
-      header: {
+      headers: {
         Authorization: `Bearer ${token}`,
       },
     }
