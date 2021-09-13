@@ -7,13 +7,14 @@ import {
   currencyFormatter,
   payoutSetting,
 } from "../actions/stripe";
-import { CompassOutlined, SettingOutlined } from "@ant-design/icons";
+import { SettingOutlined } from "@ant-design/icons";
 import { toast } from "react-toastify";
+
 const { Meta } = Card;
 const { Ribbon } = Badge;
 
 const ConnectNav = () => {
-  const [loading, setloading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [balance, setBalance] = useState(0);
   const { auth } = useSelector((state) => ({ ...state }));
   const { user, token } = auth;
@@ -26,15 +27,15 @@ const ConnectNav = () => {
   }, []);
 
   const handlePayoutSettings = async () => {
-    setloading(true);
+    setLoading(true);
     try {
       const res = await payoutSetting(token);
-      console.log("RES FOR PAYOUT SETTING LINK", res);
-      // window.location.href = res.data
-      setloading(false);
+      // console.log("RES FOR PAYOUT SETTING LINK", res);
+      window.location.href = res.data.url;
+      setLoading(false);
     } catch (err) {
       console.log(err);
-      setloading(false);
+      setLoading(false);
       toast("Unable to access settings. Try again");
     }
   };
@@ -53,10 +54,8 @@ const ConnectNav = () => {
         auth.user.stripe_seller &&
         auth.user.stripe_seller.charges_enabled && (
           <>
-            <Ribbon text="Available" color="blue">
+            <Ribbon text="Avaliable" color="grey">
               <Card className="bg-light pt-1">
-                {/* bp -> balance pending
-                    i -> index */}
                 {balance &&
                   balance.pending &&
                   balance.pending.map((bp, i) => (
@@ -66,8 +65,8 @@ const ConnectNav = () => {
                   ))}
               </Card>
             </Ribbon>
-            <Ribbon text="Payouts" color="geekblue">
-              <Card onClick={handlePayoutSettings} className="bg-ligh pointer">
+            <Ribbon text="Payouts" color="silver">
+              <Card onClick={handlePayoutSettings} className="bg-light pointer">
                 <SettingOutlined className="h5 pt-2" />
               </Card>
             </Ribbon>
