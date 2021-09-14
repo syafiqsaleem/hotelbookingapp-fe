@@ -54,7 +54,7 @@ const ConnectNav = () => {
         auth.user.stripe_seller &&
         auth.user.stripe_seller.charges_enabled && (
           <>
-            <Ribbon text="Avaliable" color="grey">
+            <Ribbon text="Avaliable" color="blue">
               <Card className="bg-light pt-1">
                 {balance &&
                   balance.pending &&
@@ -65,7 +65,7 @@ const ConnectNav = () => {
                   ))}
               </Card>
             </Ribbon>
-            <Ribbon text="Payouts" color="silver">
+            <Ribbon text="Payouts" color="volcano">
               <Card onClick={handlePayoutSettings} className="bg-light pointer">
                 <SettingOutlined className="h5 pt-2" />
               </Card>
