@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import AlgoliaPlaces from "algolia-places-react";
 import { DatePicker, Select } from "antd";
 import moment from "moment";
+import { createHotel } from "../actions/hotel";
 
 const { Option } = Select;
 
@@ -18,7 +19,6 @@ const NewHotel = () => {
   const [values, setValues] = useState({
     title: "",
     content: "",
-    location: "",
     image: "",
     price: "",
     from: "",
@@ -29,12 +29,15 @@ const NewHotel = () => {
   const [preview, setPreview] = useState(
     "https://via.placeholder.com/100x100.png?text=PREVIEW"
   );
+  const [location, setLocation] = useState("");
 
   //destructuring variables from state
-  const { title, content, location, image, price, from, to, bed } = values;
+  const { title, content, image, price, from, to, bed } = values;
 
   const handleSubmit = (e) => {
-    //
+    e.preventDefault();
+    console.log(values);
+    console.log(location);
   };
 
   const handleImageChange = (e) => {
@@ -80,9 +83,7 @@ const NewHotel = () => {
           placeholder="Location"
           defaultValue={location}
           options={config}
-          onChange={({ suggestion }) =>
-            setValues({ ...values, location: suggestion.value })
-          }
+          onChange={({ suggestion }) => setLocation(suggestion.value)}
           style={{ height: "50px" }}
         />
         <input
@@ -159,6 +160,7 @@ const NewHotel = () => {
               className="img img-fluid m-2"
             />
             <pre>{JSON.stringify(values, null, 4)}</pre>
+            {JSON.stringify(location)}
           </div>
         </div>
       </div>
