@@ -15,6 +15,10 @@ const NewHotel = () => {
     bed: "",
   });
 
+  const [preview, setPreview] = useState(
+    "https://via.placeholder.com/100x100.png?text=PREVIEW"
+  );
+
   //destructuring variables from state
   const { title, content, location, image, price, from, to, bed } = values;
 
@@ -23,11 +27,13 @@ const NewHotel = () => {
   };
 
   const handleImageChange = (e) => {
-    //
+    // console.log(e.target.files[0]);
+    setPreview(URL.createObjectURL(e.target.files[0]));
+    setValues({ ...values, image: e.target.files[0] });
   };
 
   const handleChange = (e) => {
-    //
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   const hotelForm = () => (
@@ -96,7 +102,12 @@ const NewHotel = () => {
             {hotelForm()}
           </div>
           <div className="col-md-2">
-            Image <pre>{JSON.stringify(values, null, 4)}</pre>
+            <img
+              src={preview}
+              alt="preview_image"
+              className="img img-fluid m-2"
+            />
+            <pre>{JSON.stringify(values, null, 4)}</pre>
           </div>
         </div>
       </div>
