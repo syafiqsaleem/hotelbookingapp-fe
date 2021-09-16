@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import AlgoliaPlaces from "algolia-places-react";
-import { DatePicker } from "antd";
+import { DatePicker, Select } from "antd";
 import moment from "moment";
+
+const { Option } = Select;
 
 const config = {
   appId: process.env.REACT_APP_ALGOLIA_APP_ID,
@@ -58,7 +60,6 @@ const NewHotel = () => {
             hidden
           />
         </label>
-
         <input
           type="text"
           name="title"
@@ -67,7 +68,6 @@ const NewHotel = () => {
           className="form-control m-2"
           value={title}
         />
-
         <textarea
           name="content"
           onChange={handleChange}
@@ -75,7 +75,6 @@ const NewHotel = () => {
           className="form-control m-2"
           value={content}
         />
-
         <AlgoliaPlaces
           className="form-control ml-2 mr-2"
           placeholder="Location"
@@ -86,7 +85,6 @@ const NewHotel = () => {
           }
           style={{ height: "50px" }}
         />
-
         <input
           type="number"
           name="price"
@@ -95,15 +93,26 @@ const NewHotel = () => {
           className="form-control m-2"
           value={price}
         />
-
-        <input
+        {/* <input
           type="number"
           name="bed"
           onChange={handleChange}
           placeholder="Number of Beds"
           className="form-control m-2"
           value={bed}
-        />
+        /> */}
+
+        <Select
+          onChange={(value) => setValues({ ...values, bed: value })}
+          className="w-100 m-2"
+          size="large"
+          placeholder="Number of beds"
+        >
+          <Option key={1}>{1}</Option>
+          <Option key={2}>{2}</Option>
+          <Option key={3}>{3}</Option>
+          <Option key={4}>{4}</Option>
+        </Select>
       </div>
 
       <DatePicker
