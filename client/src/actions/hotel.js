@@ -6,3 +6,7 @@ export const createHotel = async (token, data) =>
       Authorization: `Bearer ${token}`,
     },
   });
+
+// To display all hotels
+export const allHotels = async () =>
+  await axios.get(`${process.env.REACT_APP_API}/hotels`);
