@@ -4,6 +4,7 @@ import AlgoliaPlaces from "algolia-places-react";
 import { DatePicker, Select } from "antd";
 import moment from "moment";
 import { createHotel } from "../actions/hotel";
+import { useSelector } from "react-redux";
 
 const { Option } = Select;
 
@@ -15,6 +16,9 @@ const config = {
 };
 
 const NewHotel = () => {
+  // redux
+  const { auth } = useSelector((state) => ({ ...state }));
+  const { token } = auth;
   // state
   const [values, setValues] = useState({
     title: "",
@@ -34,10 +38,29 @@ const NewHotel = () => {
   //destructuring variables from state
   const { title, content, image, price, from, to, bed } = values;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(values);
-    console.log(location);
+    // console.log(values);
+    // console.log(location);
+
+    let hotelData = new FormData();
+    hotelData.append("title", title);
+    hotelData.append("content", content);
+    hotelData.append("location", location);
+    hotelData.append("price", price);
+    image && hotelData.append("image", image);
+    hotelData.append("from", from);
+    hotelData.append("to", to);
+    hotelData.append("bed", bed);
+
+    console.log([...hotelData]);
+
+    let res = await createHotel(token, hotelData);
+    console.log("HOTEL CREATE RES", res);
+    toast("New hotel is posted");
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   };
 
   const handleImageChange = (e) => {
