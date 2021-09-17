@@ -10,3 +10,13 @@ export const createHotel = async (token, data) =>
 // To display all hotels
 export const allHotels = async () =>
   await axios.get(`${process.env.REACT_APP_API}/hotels`);
+
+// Number of days the hotel will be available on the homepage
+export const diffDays = (from, to) => {
+  // day in milliseconds
+  const day = 24 * 60 * 60 * 1000;
+  const start = new Date(from);
+  const end = new Date(to);
+  const difference = Math.round(Math.abs((start - end) / day));
+  return difference;
+};
