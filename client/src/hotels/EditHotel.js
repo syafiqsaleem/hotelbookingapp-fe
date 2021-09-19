@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { DatePicker, Select } from "antd";
 import { read } from "../actions/hotel";
 import { useSelector } from "react-redux";
+import HotelEditForm from "../components/forms/HotelEditForm";
 
 const { Option } = Select;
 
@@ -14,6 +15,7 @@ const EditHotel = ({ match }) => {
   const [values, setValues] = useState({
     title: "",
     content: "",
+    location: "",
     image: "",
     price: "",
     from: "",
@@ -37,7 +39,7 @@ const EditHotel = ({ match }) => {
     let res = await read(match.params.hotelId);
     // console.log(res);
     setValues({ ...values, ...res.data });
-    setPreview(`${process.env.REACT_APP_API}/hotel/image/res.data._id`);
+    setPreview(`${process.env.REACT_APP_API}/hotel/image/${res.data._id}`);
   };
 
   const handleSubmit = async (e) => {
@@ -63,7 +65,13 @@ const EditHotel = ({ match }) => {
         <div className="row">
           <div className="col-md-10">
             <br />
-            show edit form
+            <HotelEditForm
+              values={values}
+              setValues={setValues}
+              handleChange={handleChange}
+              handleImageChange={handleImageChange}
+              handleSubmit={handleSubmit}
+            />
           </div>
           <div className="col-md-2">
             <img
