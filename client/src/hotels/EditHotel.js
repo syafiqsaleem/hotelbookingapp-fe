@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { DatePicker, Select } from "antd";
-import { read } from "../actions/hotel";
+import { read, updateHotel } from "../actions/hotel";
 import { useSelector } from "react-redux";
 import HotelEditForm from "../components/forms/HotelEditForm";
 
@@ -28,7 +28,7 @@ const EditHotel = ({ match }) => {
   );
 
   //destructuring variables from state
-  const { title, content, image, price, from, to, bed } = values;
+  const { title, content, image, price, from, to, bed, location } = values;
 
   useEffect(() => {
     // console.log(match.params.hotelId);
@@ -43,7 +43,26 @@ const EditHotel = ({ match }) => {
   };
 
   const handleSubmit = async (e) => {
-    //
+    e.preventDefault();
+
+    let hotelData = new FormData();
+    hotelData.append("title", title);
+    hotelData.append("content", content);
+    hotelData.append("location", location);
+    hotelData.append("price", price);
+    image && hotelData.append("image", image);
+    hotelData.append("from", from);
+    hotelData.append("to", to);
+    hotelData.append("bed", bed);
+
+    try {
+      let res = await updateHotel(token, hotelData, match.params.hotelId);
+      console.log("HOTEL UPDATE RES", res);
+      toast.success(`${res.data.title} is updated`);
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response.data.err);
+    }
   };
 
   const handleImageChange = (e) => {
