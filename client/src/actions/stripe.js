@@ -50,3 +50,18 @@ export const payoutSetting = async (token) =>
       },
     }
   );
+
+// To get session ID from stripe using our BE
+// hotelId -> Based on the hotelId we will find the particular hotel and use that hotel's name to make payments
+export const getSessionId = async (token, hotelId) =>
+  await axios.post(
+    `${process.env.REACT_APP_API}/stripe-session-id`,
+    {
+      hotelId,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
