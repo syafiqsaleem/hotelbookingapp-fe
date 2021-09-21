@@ -3,10 +3,10 @@ import { currencyFormatter } from "../../actions/stripe";
 import { diffDays } from "../../actions/hotel";
 import { useHistory, Link } from "react-router-dom";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
-// import OrderModal from "../modals/OrderModal";
+import OrderModal from "../modals/OrderModal";
 
 const BookingCard = ({ hotel, session, orderedBy }) => {
-  //   const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const history = useHistory();
   return (
@@ -55,23 +55,23 @@ const BookingCard = ({ hotel, session, orderedBy }) => {
                 Available from {new Date(hotel.from).toLocaleDateString()}
               </p>
 
-              {/* {showModal && (
+              {showModal && (
                 <OrderModal
                   session={session}
                   orderedBy={orderedBy}
                   showModal={showModal}
                   setShowModal={setShowModal}
                 />
-              )} */}
+              )}
 
-              {/* <div className="d-flex justify-content-between h4">
+              <div className="d-flex justify-content-between h4">
                 <button
                   onClick={() => setShowModal(!showModal)}
                   className="btn btn-primary"
                 >
                   Show Payment info
-                </button> */}
-              {/* </div> */}
+                </button>
+              </div>
             </div>
           </div>
         </div>
