@@ -73,7 +73,7 @@ export const stripeSuccessRequest = async (token, hotelId) =>
     { hotelId },
     {
       headers: {
-        Authorization: `Bearer: ${token}`,
+        Authorization: `Bearer ${token}`,
       },
     }
   );
