@@ -68,3 +68,7 @@ export const isAlreadyBooked = async (token, hotelId) =>
       Authorization: `Bearer ${token}`,
     },
   });
+
+// Search DB for searched parameters keyed in
+export const searchListings = async (query) =>
+  await axios.post(`${process.env.REACT_APP_API}/search-listings`, query);
