@@ -44,12 +44,9 @@ const ViewHotel = ({ match, history }) => {
 
     setLoading(true);
     if (!auth) history.push("/login");
-    // console.log(
-    //   "get session id from stripe to show a button > checkout with stripe"
-    // );
     // console.log(auth.token, match.params.hotelId);
     let res = await getSessionId(auth.token, match.params.hotelId);
-    // console.log("get sessionid response", res.data.sessionId);
+    // console.log("get sessionid resposne", res.data.sessionId);
     const stripe = await loadStripe(process.env.REACT_APP_STRIPE_KEY);
     stripe
       .redirectToCheckout({
@@ -61,9 +58,8 @@ const ViewHotel = ({ match, history }) => {
   return (
     <>
       <div className="container-fluid bg-secondary p-5 text-center">
-        <h2>{hotel.title}</h2>
+        <h1>{hotel.title}</h1>
       </div>
-
       <div className="container-fluid">
         <div className="row">
           <div className="col-md-6">
@@ -82,14 +78,14 @@ const ViewHotel = ({ match, history }) => {
               </span>
             </p>
             <p>
-              From <br />
-              {moment(new Date(hotel.from)).format("MMM Do YYYY, h:mm:ss a")}
+              From <br />{" "}
+              {moment(new Date(hotel.from)).format("MMMM Do YYYY, h:mm:ss a")}
             </p>
             <p>
-              To <br />
-              {moment(new Date(hotel.to)).format("MMM Do YYYY, h:mm:ss a")}
+              To <br />{" "}
+              {moment(new Date(hotel.to)).format("MMMM Do YYYY, h:mm:ss a")}
             </p>
-            <i>Posted By {hotel.postedBy && hotel.postedBy.name}</i>
+            <i>Posted by {hotel.postedBy && hotel.postedBy.name}</i>
             <br />
             <button
               onClick={handleClick}
