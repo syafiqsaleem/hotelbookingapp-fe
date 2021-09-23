@@ -1,70 +1,116 @@
-# Getting Started with Create React App
+<h1 align="center">Hotel Booking Platform</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">An online application for seller to post their hotel listings, while buyers can browse through the listings and make bookings</p>
 
-## Available Scripts
+## Links
 
-In the project directory, you can run:
+- [Repo - Frontend](https://github.com/syafiqsaleem/hotelbookingapp-fe)
 
-### `npm start`
+- [Repo - Backend](https://github.com/syafiqsaleem/hotelbookingapp-be)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [App - Firebase](https://hotelsbookingapp-a9bc7.web.app)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Screenshots
 
-### `npm test`
+### Registration Page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Registration Page](images/registration-page.png)
 
-### `npm run build`
+### Dashboard (Buyer)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Home Page](images/buyer-dashboard.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Hotel Listing (Buyer)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![All Hotels](images/hotel-listing-page.png)
 
-### `npm run eject`
+### Dashboard (Seller)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Shop Categories](images/seller-dashboard.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Stripe Payout (Seller)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Stripe Payout](<images/seller-stripe-payouts-page-(payouts).png>)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Instructions
 
-## Learn More
+1. Register and create an account.
+2. Register via Stripe (Your Hotels -> Setup Payouts) to be a seller
+3. Login upon completion on registering.
+4. (User) Browse through the lisitngs and book hotel.
+5. (Seller) Able to post hotel listings
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Available Routes
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+In the project directory, you can access:
 
-### Code Splitting
+### `User (Non registered/Not logged in)`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- View available hotels
+- Search for hotels in the listing via location, date, and number of beds
+- Find out more details about listed hotels
 
-### Analyzing the Bundle Size
+### `User (Signed in)`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- View available hotels
+- Search for hotels in the listing via location, date, and number of beds
+- Find out more details about listed hotels
+- Make hotel bookings/reservation
+- View your bookings/reservations at the dashboard page
 
-### Making a Progressive Web App
+### `Seller`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Register via Stripe to be a seller (Be able to list their hotels)
+- Dashboard (Available) -> View amount of money made from sales (total)
+- Dashboard (Payouts) -> Money will automatically be transferred to seller every 7 days, sellers can check the details here.
+- Dashboard (Your Hotels) -> View, edit and delete the hotels listed by the logged in seller
+- Dashboard (+ Add New) -> Create new hotel listings
 
-### Advanced Configuration
+## MVP
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Features:
 
-### Deployment
+1. Search function (Search via location, dates, and number of beds)
+2. Make payment via Stripe
+3. Auto payout to seller every 7 days
+4. Once a user books a hotel listed, 80% goes to the seller, and 20% goes to the app
+5. Register Sellers via Stripe
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Built With
 
-### `npm run build` fails to minify
+- Mongodb
+- Express
+- React
+- Redux
+- Node
+- Express
+- Mongoose
+- Formidable (image upload handling)
+- Moment (date handling)
+- Stripe (payment)
+- Bootstrap
+- JSON web token
+- Ant Design
+- Algolia API
+- Axios
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Future Updates
+
+- [ ] To separate access between buyer and seller
+- [ ] Listings not to disappear once they booked, and the seller removes it after.
+- [ ] Other payment options (e.g. via google/apple pay)
+- [ ] More filtering options
+- [ ] Standardize image size displayed
+- [ ] Improve UI for hotel browsing
+
+## Author
+
+**Mohamed Syafiq**
+
+- [Profile](https://github.com/syafiqsaleem)
+
+## 🤝 Support
+
+Contributions, issues, and feature requests are welcome!
+
+Give a ⭐️ if you like this project!
