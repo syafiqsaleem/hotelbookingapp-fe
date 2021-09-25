@@ -97,7 +97,7 @@ Features:
 ## Future Updates
 
 - [ ] To separate access between buyer and seller
-- [ ] Listings not to disappear once they booked, and the seller removes it after.
+- [ ] Listings not to disappear once user booked, even if the seller removes the listing after.
 - [ ] Other payment options (e.g. via google/apple pay)
 - [ ] More filtering options
 - [ ] Standardize image size displayed
