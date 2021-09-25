@@ -85,7 +85,7 @@ Features:
 - Node
 - Express
 - Mongoose
-- Formidable (image upload handling)
+- Formidable (handle form data)
 - Moment (date handling)
 - Stripe (payment)
 - Bootstrap

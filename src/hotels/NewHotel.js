@@ -21,13 +21,11 @@ const NewHotel = () => {
     to: "",
     bed: "",
   });
-
   const [preview, setPreview] = useState(
     "https://via.placeholder.com/100x100.png?text=PREVIEW"
   );
   const [location, setLocation] = useState("");
-
-  //destructuring variables from state
+  // destructuring variables from state
   const { title, content, image, price, from, to, bed } = values;
 
   const handleSubmit = async (e) => {
